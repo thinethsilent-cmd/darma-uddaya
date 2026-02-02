@@ -1,1 +1,138 @@
- hi
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Loading... | MediaPortal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Adsterra/Propeller Pop-under Script -->
+    <script>(function(s){s.dataset.zone='10556077',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+        .movie-gradient {
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.7) 0%, rgba(15, 23, 42, 1) 100%);
+        }
+        .shimmer {
+            background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-4">
+
+    <!-- Background Decoration -->
+    <div class="fixed inset-0 z-[-1] opacity-20">
+        <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&q=80&w=1000" alt="Background" class="w-full h-full object-cover">
+        <div class="absolute inset-0 movie-gradient"></div>
+    </div>
+
+    <main class="max-w-md w-full bg-slate-900/80 backdrop-blur-md border border-slate-700/50 rounded-2xl p-8 shadow-2xl text-center">
+        <!-- Brand/Icon -->
+        <div class="mb-6">
+            <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg shadow-blue-500/20">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10" />
+                </svg>
+            </div>
+            <h1 id="status-text" class="text-2xl font-bold mb-2">Connecting to Server...</h1>
+            <p class="text-slate-400 text-sm">Please wait while we verify your secure connection.</p>
+        </div>
+
+        <!-- Progress Container -->
+        <div id="progress-container" class="mb-8">
+            <div class="w-full bg-slate-800 rounded-full h-3 mb-2 overflow-hidden">
+                <div id="progress-bar" class="bg-blue-500 h-full w-0 transition-all duration-300 ease-out"></div>
+            </div>
+            <div class="flex justify-between text-xs text-slate-500">
+                <span id="percent-text">0%</span>
+                <span id="size-text">File Size: 1.42 GB</span>
+            </div>
+        </div>
+
+        <!-- Hidden Download Button (Shown after progress) -->
+        <div id="download-area" class="hidden animate-bounce">
+            <a href="https://otieu.com/4/10556076" target="_blank" 
+               class="inline-block w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-6 rounded-xl transition-all shadow-lg shadow-blue-600/30 transform active:scale-95">
+                DOWNLOAD NOW
+            </a>
+            <p class="mt-4 text-xs text-slate-500 italic">Link generated! Click above to start.</p>
+        </div>
+
+        <!-- Placeholder for "User activity" requirement for some ads -->
+        <div id="fake-log" class="text-[10px] font-mono text-slate-600 mt-6 h-12 overflow-hidden text-left border-t border-slate-800 pt-2">
+            <div>> Initializing handshake...</div>
+            <div id="log-2" class="hidden">> Encrypting tunnel...</div>
+            <div id="log-3" class="hidden">> Locating nearest mirror...</div>
+        </div>
+    </main>
+
+    <footer class="mt-8 text-slate-500 text-xs text-center max-w-xs">
+        &copy; 2024 MediaPortal Secure Mirror Service. <br>
+        By continuing, you agree to our Terms of Service.
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const progressBar = document.getElementById('progress-bar');
+            const percentText = document.getElementById('percent-text');
+            const statusText = document.getElementById('status-text');
+            const downloadArea = document.getElementById('download-area');
+            const progressContainer = document.getElementById('progress-container');
+            
+            let progress = 0;
+            const statuses = [
+                "Searching for File...",
+                "Bypassing Proxy...",
+                "Analyzing Bitrate...",
+                "Ready to Download!"
+            ];
+
+            const interval = setInterval(() => {
+                progress += Math.random() * 15;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    showDownload();
+                }
+
+                progressBar.style.width = progress + '%';
+                percentText.innerText = Math.floor(progress) + '%';
+
+                // Update status messages based on progress
+                if (progress > 25) {
+                    statusText.innerText = statuses[1];
+                    document.getElementById('log-2').classList.remove('hidden');
+                }
+                if (progress > 60) {
+                    statusText.innerText = statuses[2];
+                    document.getElementById('log-3').classList.remove('hidden');
+                }
+            }, 400);
+
+            function showDownload() {
+                statusText.innerText = statuses[3];
+                statusText.classList.add('text-green-400');
+                progressContainer.classList.add('opacity-50');
+                downloadArea.classList.remove('hidden');
+                
+                // Optional: Auto-redirect after a few seconds of being ready
+                /*
+                setTimeout(() => {
+                    window.location.href = "https://otieu.com/4/10556076";
+                }, 3000);
+                */
+            }
+        });
+    </script>
+</body>
+</html>
