@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download Loading... | MediaPortal</title>
+    <title>Stream or Download | MediaPortal</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Adsterra/Propeller Pop-under Script -->
     <script>(function(s){s.dataset.zone='10556077',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
@@ -39,46 +39,61 @@
     <main class="max-w-md w-full bg-slate-900/80 backdrop-blur-md border border-slate-700/50 rounded-2xl p-8 shadow-2xl text-center">
         <!-- Brand/Icon -->
         <div class="mb-6">
-            <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg shadow-blue-500/20">
+            <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg shadow-red-500/20">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
             </div>
-            <h1 id="status-text" class="text-2xl font-bold mb-2">Connecting to Server...</h1>
-            <p class="text-slate-400 text-sm">Please wait while we verify your secure connection.</p>
+            <h1 id="status-text" class="text-2xl font-bold mb-2">Preparing Stream...</h1>
+            <p class="text-slate-400 text-sm">Synchronizing with high-speed media servers.</p>
         </div>
 
         <!-- Progress Container -->
         <div id="progress-container" class="mb-8">
             <div class="w-full bg-slate-800 rounded-full h-3 mb-2 overflow-hidden">
-                <div id="progress-bar" class="bg-blue-500 h-full w-0 transition-all duration-300 ease-out"></div>
+                <div id="progress-bar" class="bg-red-500 h-full w-0 transition-all duration-300 ease-out"></div>
             </div>
             <div class="flex justify-between text-xs text-slate-500">
                 <span id="percent-text">0%</span>
-                <span id="size-text">File Size: 1.42 GB</span>
+                <span id="quality-text">Quality: 1080p Ultra HD</span>
             </div>
         </div>
 
-        <!-- Hidden Download Button (Shown after progress) -->
-        <div id="download-area" class="hidden animate-bounce">
+        <!-- Hidden Actions Area (Shown after progress) -->
+        <div id="action-area" class="hidden flex flex-col gap-4">
+            <!-- Watch Button -->
             <a href="https://otieu.com/4/10556076" target="_blank" 
-               class="inline-block w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-6 rounded-xl transition-all shadow-lg shadow-blue-600/30 transform active:scale-95">
-                DOWNLOAD NOW
+               class="inline-flex items-center justify-center gap-2 w-full bg-red-600 hover:bg-red-500 text-white font-bold py-4 px-6 rounded-xl transition-all shadow-lg shadow-red-600/30 transform active:scale-95">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                </svg>
+                WATCH ONLINE
             </a>
-            <p class="mt-4 text-xs text-slate-500 italic">Link generated! Click above to start.</p>
+
+            <!-- Download Button -->
+            <a href="https://otieu.com/4/10556076" target="_blank" 
+               class="inline-flex items-center justify-center gap-2 w-full bg-slate-800 hover:bg-slate-700 text-white font-semibold py-3 px-6 rounded-xl transition-all border border-slate-600 transform active:scale-95">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                Download File (1.42 GB)
+            </a>
+            
+            <p class="mt-2 text-xs text-slate-500 italic">Fast servers detected. Ready for playback.</p>
         </div>
 
-        <!-- Placeholder for "User activity" requirement for some ads -->
+        <!-- Log sequence -->
         <div id="fake-log" class="text-[10px] font-mono text-slate-600 mt-6 h-12 overflow-hidden text-left border-t border-slate-800 pt-2">
-            <div>> Initializing handshake...</div>
-            <div id="log-2" class="hidden">> Encrypting tunnel...</div>
-            <div id="log-3" class="hidden">> Locating nearest mirror...</div>
+            <div>> Connecting to CDN...</div>
+            <div id="log-2" class="hidden">> Buffering media segments...</div>
+            <div id="log-3" class="hidden">> Optimizing for your connection...</div>
         </div>
     </main>
 
     <footer class="mt-8 text-slate-500 text-xs text-center max-w-xs">
-        &copy; 2024 MediaPortal Secure Mirror Service. <br>
-        By continuing, you agree to our Terms of Service.
+        &copy; 2024 MediaPortal Secure Streaming. <br>
+        This site is protected by reCAPTCHA and terms apply.
     </footer>
 
     <script>
@@ -86,51 +101,45 @@
             const progressBar = document.getElementById('progress-bar');
             const percentText = document.getElementById('percent-text');
             const statusText = document.getElementById('status-text');
-            const downloadArea = document.getElementById('download-area');
+            const actionArea = document.getElementById('action-area');
             const progressContainer = document.getElementById('progress-container');
             
             let progress = 0;
             const statuses = [
-                "Searching for File...",
-                "Bypassing Proxy...",
-                "Analyzing Bitrate...",
-                "Ready to Download!"
+                "Locating Stream...",
+                "Buffering Metadata...",
+                "Decoding Video...",
+                "Media Ready!"
             ];
 
             const interval = setInterval(() => {
-                progress += Math.random() * 15;
+                // Simulate irregular loading speeds
+                progress += Math.random() * 12;
                 if (progress >= 100) {
                     progress = 100;
                     clearInterval(interval);
-                    showDownload();
+                    showActions();
                 }
 
                 progressBar.style.width = progress + '%';
                 percentText.innerText = Math.floor(progress) + '%';
 
-                // Update status messages based on progress
-                if (progress > 25) {
+                if (progress > 30) {
                     statusText.innerText = statuses[1];
                     document.getElementById('log-2').classList.remove('hidden');
                 }
-                if (progress > 60) {
+                if (progress > 65) {
                     statusText.innerText = statuses[2];
                     document.getElementById('log-3').classList.remove('hidden');
                 }
-            }, 400);
+            }, 350);
 
-            function showDownload() {
+            function showActions() {
                 statusText.innerText = statuses[3];
-                statusText.classList.add('text-green-400');
-                progressContainer.classList.add('opacity-50');
-                downloadArea.classList.remove('hidden');
-                
-                // Optional: Auto-redirect after a few seconds of being ready
-                /*
-                setTimeout(() => {
-                    window.location.href = "https://otieu.com/4/10556076";
-                }, 3000);
-                */
+                statusText.classList.add('text-red-400');
+                progressContainer.classList.add('hidden');
+                actionArea.classList.remove('hidden');
+                actionArea.classList.add('animate-in', 'fade-in', 'duration-700');
             }
         });
     </script>
